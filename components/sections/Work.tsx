@@ -1,15 +1,27 @@
+import Image from "next/image";
 import { Reveal, RevealGroup, RevealItem } from "@/components/ui/Reveal";
 import { WorkTileArt } from "@/components/ui/WorkTileArt";
 import { TiltCard } from "@/components/ui/TiltCard";
 
-const PROJECTS = [
+type Project = {
+  name: string;
+  category: string;
+  span: string;
+  aspect: string;
+  mark: string;
+  accent: "gold" | "green";
+  image?: string;
+};
+
+const PROJECTS: Project[] = [
   {
     name: "Industri",
     category: "Nightlife · Campaign",
     span: "md:col-span-7",
     aspect: "aspect-[16/11]",
     mark: "After Hours",
-    accent: "gold" as const,
+    accent: "gold",
+    image: "/assets/work/industri.jpg",
   },
   {
     name: "Yevan David",
@@ -65,7 +77,19 @@ export function Work() {
             >
               <a href="#contact" data-cursor="View case" className="block h-full w-full">
                 <TiltCard className="h-full w-full" strength={6}>
-                  <WorkTileArt mark={project.mark} accent={project.accent} />
+                  {project.image ? (
+                    <div className="relative h-full w-full overflow-hidden">
+                      <Image
+                        src={project.image}
+                        alt={`${project.name} — ${project.category}`}
+                        fill
+                        sizes="(max-width: 768px) 100vw, 60vw"
+                        className="object-cover object-center saturate-[0.92] brightness-[0.82] transition-[filter] duration-500 ease-premium group-hover:saturate-100 group-hover:brightness-95"
+                      />
+                    </div>
+                  ) : (
+                    <WorkTileArt mark={project.mark} accent={project.accent} />
+                  )}
                 </TiltCard>
                 <div className="pointer-events-none absolute inset-x-0 bottom-0 flex items-end justify-between gap-4 bg-gradient-to-t from-ink/85 to-transparent p-[clamp(1rem,2vw,1.6rem)]">
                   <div>
