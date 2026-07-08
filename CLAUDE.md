@@ -222,18 +222,24 @@ In `assets/work/` (high-res, cropped/graded from the source portfolio):
 `industri_flyer.png`, `industri_moodboard.png`, `nets_logo.png`, `nets_1/2/3.png`,
 `yevan_portrait.png`, `yevan_1/2/3/4.png`, `cd_1.png`, `cd_2.png`, `cd_visual.png`.
 
-Industri, Yevan David, and Crumbs & Doilies' work tiles now use real supplied
-images (`public/assets/work/industri.jpg`, `yevan.jpg`, `crumbs.jpg` — see
-`Work.tsx`'s `PROJECTS[].image`), shown via `object-cover`; Industri and
-Yevan David's source aspect ratios closely match their tiles so they render
-essentially uncropped, while Crumbs & Doilies' wider source (1536×1024 vs.
-the tile's 16:12) gets a modest center-crop (~5.6% off each side) that still
-keeps both before/after photos, the BEFORE/AFTER labels, and the logo fully
-visible. The Nets still renders `WorkTileArt` — a generative
-typographic/gradient poster treatment — pending its case-study image. No
-stock photography is used anywhere; decorative visuals elsewhere (Aurora,
-GlowOrb, grain) are abstract/generative, not photographic, so nothing
-purports to be real client photography before it's supplied.
+All four work tiles now use real supplied images (`public/assets/work/
+industri.jpg`, `yevan.jpg`, `crumbs.jpg`, `nets.jpg` — see `Work.tsx`'s
+`PROJECTS[].image`), shown via `object-cover`; `WorkTileArt` (the generative
+typographic/gradient placeholder) is no longer rendered by default but stays
+in the codebase in case a future case study needs it before real assets
+arrive. Industri and Yevan David's source aspect ratios closely match their
+tiles so they render essentially uncropped. Crumbs & Doilies and The Nets
+have wider sources than their 16:12 tile, so each was pre-cropped in Sharp
+(not relying on CSS `object-position`) to fit exactly: Crumbs & Doilies got
+a modest symmetric center-crop (~5.6% off each side, verified both photos +
+BEFORE/AFTER labels + logo stay visible); The Nets' crop is asymmetric
+(125px off the left, ~46px off the right of the 1536px source) because its
+"THE NETS" and "UGrowth" logos aren't centered in the source graphic —
+symmetric cropping would've clipped the right-hand "MEDIA AND MARKETING"
+text, so the crop window was shifted right until both logos cleared with
+margin. No stock photography is used anywhere; decorative visuals elsewhere
+(Aurora, GlowOrb, grain) are abstract/generative, not photographic, so
+nothing purports to be real client photography before it's supplied.
 
 The real UGrowth logo is wired into the nav, footer, favicon
 (`app/icon.png`/`app/apple-icon.png`), and the loading screen, replacing the
@@ -245,9 +251,9 @@ it's the same artwork with its transparent margins trimmed (bounding-box crop
 only, no recolor/redesign) so the mark reads clearly at small sizes; the
 favicon/app-icon variants are resized from the untrimmed square original.
 
-Missing / to supply: final case-study image for The Nets,
-real showreel + client video, real testimonials, verified metrics, final
-contact email.
+Missing / to supply: real showreel + client video, real testimonials,
+verified metrics. (Contact email: footer uses the real address; `Cta.tsx`'s
+mail link still has the old placeholder — see §8 note above.)
 
 ---
 
@@ -268,7 +274,7 @@ automatically).
 
 - [ ] Individual case-study pages (Challenge→Approach→Craft→Outcome, per §7)
 - [ ] Dedicated Services & Studio pages
-- [ ] Wire a real case-study image into `WorkTileArt`'s remaining slot (The Nets) once supplied
+- [x] Wire real case-study images into all four work tiles (Industri, Yevan David, Crumbs & Doilies, The Nets)
 - [ ] Collect + insert real testimonials (get sign-off) and verified metrics
 - [ ] Replace hero atmosphere with a graded showreel
 - [ ] Finalise real contact email + social links
