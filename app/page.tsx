@@ -5,7 +5,6 @@ import { Services } from "@/components/sections/Services";
 import { Difference } from "@/components/sections/Difference";
 import { Process } from "@/components/sections/Process";
 import { Impact } from "@/components/sections/Impact";
-import { Testimonials } from "@/components/sections/Testimonials";
 import { Industries } from "@/components/sections/Industries";
 import { Studio } from "@/components/sections/Studio";
 import { Faq } from "@/components/sections/Faq";
@@ -21,7 +20,6 @@ export default function Home() {
       <Difference />
       <Process />
       <Impact />
-      <Testimonials />
       <Industries />
       <Studio />
       <Faq />

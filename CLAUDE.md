@@ -117,12 +117,16 @@ and dedicated Services/Studio pages are the next build phase.
 7. **The Difference** — full forest-green section. *"Most brands don't have a content problem. They have an attention problem."*
 8. **Process** — 7 steps: Research · Strategy · Mood Boarding · Creation · Editing · Publishing · Growth.
 9. **Impact** — count-up stats. Currently illustrative (10K+ community, 4 brands, 100% bespoke) with an honest note; replace with verified metrics as they arrive.
-10. **Testimonials** — 3 placeholder quote cards ("[Client testimonial — to be added]") for Industri / The Nets / Yevan David. Collect + get sign-off before publishing.
-11. **Industries** — hospitality/nightlife lead, broader sectors follow.
-12. **Studio + founder** — "Small by design." + founder note (see §7).
-13. **FAQ** — accordions: outside hospitality? · pricing (bespoke, no fixed packages) · remote/international? · what a project looks like.
-14. **CTA / The invitation** — *"Let's build something impossible to ignore."* + "We take on a limited number of brands each quarter." + one gold button.
-15. **Mega-footer** — giant "Let's talk." + nav + contact + socials + "Impossible to ignore."
+10. **Industries** — hospitality/nightlife lead, broader sectors follow.
+11. **Studio + founder** — "Small by design." + founder note (see §7).
+12. **FAQ** — accordions: outside hospitality? · pricing (bespoke, no fixed packages) · remote/international? · what a project looks like.
+13. **CTA / The invitation** — *"Let's build something impossible to ignore."* + "We take on a limited number of brands each quarter." + one gold button.
+14. **Mega-footer** — giant "Let's talk." + nav + contact + socials + "Impossible to ignore."
+
+Testimonials section was removed from the homepage per direct instruction
+(`components/sections/Testimonials.tsx` deleted, no longer composed in
+`app/page.tsx`). If real testimonials arrive later and the section should
+return, re-add it between Impact and Industries.
 
 ---
 
