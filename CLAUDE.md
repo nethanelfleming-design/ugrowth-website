@@ -218,16 +218,18 @@ In `assets/work/` (high-res, cropped/graded from the source portfolio):
 `industri_flyer.png`, `industri_moodboard.png`, `nets_logo.png`, `nets_1/2/3.png`,
 `yevan_portrait.png`, `yevan_1/2/3/4.png`, `cd_1.png`, `cd_2.png`, `cd_visual.png`.
 
-Industri and Yevan David's work tiles now use real supplied images
-(`public/assets/work/industri.jpg`, `yevan.jpg` — see `Work.tsx`'s
-`PROJECTS[].image`); both are the client's full supplied graphics shown
-uncropped, since each one's native aspect ratio happens to closely match its
-tile's aspect ratio. The Nets and Crumbs & Doilies still render `WorkTileArt`
-— a generative typographic/gradient poster treatment (large faint serif
-watermark + gold or green wash, per project) — pending their case-study
-images. No stock photography is used anywhere; decorative visuals elsewhere
-(Aurora, GlowOrb, grain) are abstract/generative, not photographic, so
-nothing purports to be real client photography before it's supplied.
+Industri, Yevan David, and Crumbs & Doilies' work tiles now use real supplied
+images (`public/assets/work/industri.jpg`, `yevan.jpg`, `crumbs.jpg` — see
+`Work.tsx`'s `PROJECTS[].image`), shown via `object-cover`; Industri and
+Yevan David's source aspect ratios closely match their tiles so they render
+essentially uncropped, while Crumbs & Doilies' wider source (1536×1024 vs.
+the tile's 16:12) gets a modest center-crop (~5.6% off each side) that still
+keeps both before/after photos, the BEFORE/AFTER labels, and the logo fully
+visible. The Nets still renders `WorkTileArt` — a generative
+typographic/gradient poster treatment — pending its case-study image. No
+stock photography is used anywhere; decorative visuals elsewhere (Aurora,
+GlowOrb, grain) are abstract/generative, not photographic, so nothing
+purports to be real client photography before it's supplied.
 
 The real UGrowth logo is wired into the nav, footer, favicon
 (`app/icon.png`/`app/apple-icon.png`), and the loading screen, replacing the
@@ -239,7 +241,7 @@ it's the same artwork with its transparent margins trimmed (bounding-box crop
 only, no recolor/redesign) so the mark reads clearly at small sizes; the
 favicon/app-icon variants are resized from the untrimmed square original.
 
-Missing / to supply: final case-study images for The Nets / Crumbs & Doilies,
+Missing / to supply: final case-study image for The Nets,
 real showreel + client video, real testimonials, verified metrics, final
 contact email.
 
@@ -262,7 +264,7 @@ automatically).
 
 - [ ] Individual case-study pages (Challenge→Approach→Craft→Outcome, per §7)
 - [ ] Dedicated Services & Studio pages
-- [ ] Wire real case-study images into `WorkTileArt`'s remaining slots (The Nets, Crumbs & Doilies) once supplied
+- [ ] Wire a real case-study image into `WorkTileArt`'s remaining slot (The Nets) once supplied
 - [ ] Collect + insert real testimonials (get sign-off) and verified metrics
 - [ ] Replace hero atmosphere with a graded showreel
 - [ ] Finalise real contact email + social links

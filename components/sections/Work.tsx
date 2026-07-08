@@ -47,6 +47,7 @@ const PROJECTS: Project[] = [
     aspect: "aspect-[16/12]",
     mark: "C&D",
     accent: "gold" as const,
+    image: "/assets/work/crumbs.jpg",
   },
 ];
 
