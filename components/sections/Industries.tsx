@@ -1,4 +1,5 @@
 import { Reveal, RevealGroup, RevealItem } from "@/components/ui/Reveal";
+import { GlowOrb } from "@/components/ui/GlowOrb";
 
 const TAGS = [
   "Nightlife",
@@ -18,8 +19,9 @@ const TAGS = [
 
 export function Industries() {
   return (
-    <section className="py-[var(--gap)]">
-      <div className="mx-auto max-w-[var(--maxw)] px-[var(--pad)]">
+    <section className="relative overflow-hidden py-[var(--gap)]">
+      <GlowOrb color="green" size={480} className="-right-32 top-1/2 -translate-y-1/2 opacity-70" speed="slower" />
+      <div className="relative mx-auto max-w-[var(--maxw)] px-[var(--pad)]">
         <div className="mb-[clamp(2rem,5vw,4rem)]">
           <Reveal as="p" className="text-step-n1 font-semibold uppercase tracking-[0.28em] text-gold">
             Industries

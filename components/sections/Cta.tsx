@@ -1,10 +1,12 @@
 import { Reveal } from "@/components/ui/Reveal";
 import { Button } from "@/components/ui/Button";
+import { Aurora } from "@/components/ui/Aurora";
 
 export function Cta() {
   return (
-    <section id="contact" className="py-[clamp(6rem,16vh,12rem)] text-center">
-      <div className="mx-auto max-w-[var(--maxw)] px-[var(--pad)]">
+    <section id="contact" className="relative overflow-hidden py-[clamp(6rem,16vh,12rem)] text-center">
+      <Aurora variant="gold" />
+      <div className="relative mx-auto max-w-[var(--maxw)] px-[var(--pad)]">
         <Reveal as="p" className="text-step-n1 font-semibold uppercase tracking-[0.28em] text-gold">
           The invitation
         </Reveal>

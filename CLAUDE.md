@@ -194,10 +194,14 @@ morphs to a label over `[data-cursor]` targets) · magnetic buttons
 (`Button.tsx`, spring-based pointer tracking) · mobile menu overlay
 (`AnimatePresence` slide) · FAQ accordion (`AccordionItem.tsx`, single-open,
 animated height) · count-up stats (`Counter.tsx`) · sticky mobile CTA bar ·
-hero atmosphere parallax (GSAP ScrollTrigger) · Lenis smooth scroll. All
-motion respects `prefers-reduced-motion` via `MotionConfig reducedMotion="user"`
-plus a global CSS fallback, and the custom cursor/magnetic effects are gated
-on `(hover: hover) and (pointer: fine)`.
+hero atmosphere parallax (GSAP ScrollTrigger) · Lenis smooth scroll · 3D
+tilt-on-hover work tiles (`TiltCard.tsx`) · animated gold progress rail
+scrubbed through the Process steps · generative visual system (`Aurora.tsx`,
+`GlowOrb.tsx`, `GrainOverlay.tsx`) layering gradient-mesh atmosphere, floating
+glow orbs, and a fixed film-grain texture across the hero, difference, CTA,
+impact, and industries sections. All motion respects `prefers-reduced-motion`
+via `MotionConfig reducedMotion="user"` plus a global CSS fallback, and the
+custom cursor/magnetic/tilt effects are gated on `(hover: hover) and (pointer: fine)`.
 
 Future enhancements: real showreel video in hero, WebGL touches, page
 transitions for multi-page case studies.
@@ -210,9 +214,12 @@ In `assets/work/` (high-res, cropped/graded from the source portfolio):
 `industri_flyer.png`, `industri_moodboard.png`, `nets_logo.png`, `nets_1/2/3.png`,
 `yevan_portrait.png`, `yevan_1/2/3/4.png`, `cd_1.png`, `cd_2.png`, `cd_visual.png`.
 
-The four work tiles currently render `WorkTilePlaceholder` (a clean animated
-empty state) instead of images — no stock/AI imagery — per direct instruction,
-pending final case-study assets from the client.
+The four work tiles currently render `WorkTileArt` — a generative typographic/
+gradient poster treatment (large faint serif watermark + gold or green wash,
+per project) — instead of photos, pending final case-study images from the
+client. No stock photography is used anywhere on the site; decorative visuals
+elsewhere (Aurora, GlowOrb, grain) are abstract/generative, not photographic,
+so nothing purports to be real client photography.
 
 Missing / to supply: UGrowth logo (SVG/PNG), final case-study images, real
 showreel + client video, hi-res The Nets stills, real testimonials, verified

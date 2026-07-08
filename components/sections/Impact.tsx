@@ -1,5 +1,6 @@
 import { Reveal, RevealGroup, RevealItem } from "@/components/ui/Reveal";
 import { Counter } from "@/components/ui/Counter";
+import { GlowOrb } from "@/components/ui/GlowOrb";
 
 const STATS = [
   { value: 10, suffix: "K+", label: "Community grown for a single athlete brand." },
@@ -9,7 +10,7 @@ const STATS = [
 
 export function Impact() {
   return (
-    <section className="py-[var(--gap)]">
+    <section className="relative overflow-hidden py-[var(--gap)]">
       <div className="mx-auto max-w-[var(--maxw)] px-[var(--pad)]">
         <div className="mb-[clamp(2rem,5vw,4rem)]">
           <Reveal as="p" className="text-step-n1 font-semibold uppercase tracking-[0.28em] text-gold">
@@ -24,7 +25,8 @@ export function Impact() {
 
         <RevealGroup className="grid grid-cols-1 gap-10 sm:grid-cols-3" stagger={0.1}>
           {STATS.map((stat) => (
-            <RevealItem key={stat.label}>
+            <RevealItem key={stat.label} className="relative">
+              <GlowOrb color="gold" size={180} className="left-0 top-0 -z-10 opacity-60" />
               <div className="font-serif text-step-3 leading-none text-gold">
                 <Counter target={stat.value} suffix={stat.suffix} />
               </div>

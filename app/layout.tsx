@@ -8,6 +8,7 @@ import { Footer } from "@/components/layout/Footer";
 import { StickyCta } from "@/components/layout/StickyCta";
 import { SmoothScrollProvider } from "@/components/layout/SmoothScrollProvider";
 import { Loader } from "@/components/layout/Loader";
+import { GrainOverlay } from "@/components/ui/GrainOverlay";
 
 const fraunces = Fraunces({
   variable: "--font-fraunces",
@@ -44,6 +45,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     <html lang="en" className={`${fraunces.variable} ${inter.variable}`}>
       <body>
         <MotionConfig reducedMotion="user">
+          <GrainOverlay />
           <Loader />
           <CustomCursor />
           <SmoothScrollProvider>

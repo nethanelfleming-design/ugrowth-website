@@ -1,12 +1,13 @@
+import { Target, Fingerprint, Clapperboard, Users, Globe, PartyPopper } from "lucide-react";
 import { Reveal, RevealGroup, RevealItem } from "@/components/ui/Reveal";
 
 const SERVICES = [
-  { no: "01", title: "Strategy & Positioning", desc: "We find the angle that makes you unignorable." },
-  { no: "02", title: "Brand & Identity", desc: "We build brands people remember and trust." },
-  { no: "03", title: "Creative Production", desc: "Cinematic content, photography, video, and 3D." },
-  { no: "04", title: "Social & Community", desc: "We turn audiences into demand." },
-  { no: "05", title: "Digital & Web", desc: "Destinations that convert attention into action." },
-  { no: "06", title: "Event & Hospitality", desc: "Rooms full, nights sold out, brands remembered." },
+  { no: "01", title: "Strategy & Positioning", desc: "We find the angle that makes you unignorable.", icon: Target },
+  { no: "02", title: "Brand & Identity", desc: "We build brands people remember and trust.", icon: Fingerprint },
+  { no: "03", title: "Creative Production", desc: "Cinematic content, photography, video, and 3D.", icon: Clapperboard },
+  { no: "04", title: "Social & Community", desc: "We turn audiences into demand.", icon: Users },
+  { no: "05", title: "Digital & Web", desc: "Destinations that convert attention into action.", icon: Globe },
+  { no: "06", title: "Event & Hospitality", desc: "Rooms full, nights sold out, brands remembered.", icon: PartyPopper },
 ];
 
 export function Services() {
@@ -28,13 +29,22 @@ export function Services() {
           {SERVICES.map((service) => (
             <RevealItem
               key={service.no}
-              className="group grid grid-cols-[auto_1fr] items-center gap-6 border-b border-off/10 py-[clamp(1.3rem,3vw,2.2rem)] transition-[padding] duration-500 ease-premium hover:pl-5 md:grid-cols-[auto_1fr_auto]"
+              className="group relative grid grid-cols-[auto_auto_1fr] items-center gap-5 overflow-hidden border-b border-off/10 py-[clamp(1.3rem,3vw,2.2rem)] transition-[padding] duration-500 ease-premium hover:pl-5 md:grid-cols-[auto_auto_1fr_auto]"
             >
+              <div
+                aria-hidden="true"
+                className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-gold/[0.06] to-transparent transition-transform duration-700 ease-premium group-hover:translate-x-0"
+              />
               <span className="font-serif italic text-step-0 text-gold">{service.no}</span>
+              <service.icon
+                size={22}
+                strokeWidth={1.5}
+                className="text-off-dim transition-colors duration-400 group-hover:text-gold"
+              />
               <h3 className="text-step-2 font-medium transition-colors duration-400 group-hover:text-gold">
                 {service.title}
               </h3>
-              <p className="hidden max-w-[34ch] text-right text-step-0 text-off-dim md:block">
+              <p className="col-span-3 max-w-[34ch] text-step-0 text-off-dim md:col-span-1 md:justify-self-end md:text-right">
                 {service.desc}
               </p>
             </RevealItem>

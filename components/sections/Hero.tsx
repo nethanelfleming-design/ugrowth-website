@@ -5,8 +5,16 @@ import { motion, useReducedMotion } from "motion/react";
 import gsap from "gsap";
 import { EASE_PREMIUM } from "@/lib/motion";
 import { Button } from "@/components/ui/Button";
+import { Aurora } from "@/components/ui/Aurora";
 
 const HERO_DELAY = 2;
+
+let globalWordIndex = 0;
+const nextWordIndex = () => globalWordIndex++;
+
+const LINES = [["Impossible"], ["to", "ignore."]].map((line) =>
+  line.map((word) => ({ word, index: nextWordIndex() }))
+);
 
 export function Hero() {
   const atmosphereRef = useRef<HTMLDivElement>(null);
@@ -31,14 +39,9 @@ export function Hero() {
 
   return (
     <section id="hero" className="relative flex min-h-[100svh] items-end overflow-hidden pb-[clamp(2rem,6vh,5rem)]">
-      <div
-        ref={atmosphereRef}
-        className="absolute inset-0 -z-20"
-        style={{
-          background:
-            "radial-gradient(60% 50% at 75% 15%, rgba(27,59,47,.55), transparent 70%), radial-gradient(50% 40% at 15% 90%, rgba(27,59,47,.35), transparent 70%), var(--ink)",
-        }}
-      />
+      <div ref={atmosphereRef} className="absolute inset-0 -z-20">
+        <Aurora variant="ink" className="h-full w-full" />
+      </div>
       <div
         className="absolute inset-0 -z-10 opacity-[0.05]"
         style={{
@@ -47,34 +50,30 @@ export function Hero() {
         }}
       />
 
-      <div className="mx-auto w-full max-w-[var(--maxw)] px-[var(--pad)]">
+      <div className="relative mx-auto w-full max-w-[var(--maxw)] px-[var(--pad)]">
         <h1 className="text-step-4 font-semibold leading-[1.02] tracking-[-0.025em]">
-          <span className="block overflow-hidden">
-            <motion.span
-              initial={{ y: "102%" }}
-              animate={{ y: 0 }}
-              transition={{ duration: 1, ease: EASE_PREMIUM, delay: HERO_DELAY }}
-              className="block"
-            >
-              Impossible
-            </motion.span>
-          </span>
-          <span className="block overflow-hidden">
-            <motion.span
-              initial={{ y: "102%" }}
-              animate={{ y: 0 }}
-              transition={{ duration: 1, ease: EASE_PREMIUM, delay: HERO_DELAY + 0.09 }}
-              className="block"
-            >
-              to ignore.
-            </motion.span>
-          </span>
+          {LINES.map((line, lineIdx) => (
+            <span key={lineIdx} className="flex flex-wrap gap-x-[0.28em]">
+              {line.map(({ word, index }) => (
+                <span key={word} className="overflow-hidden pb-[0.1em]">
+                  <motion.span
+                    initial={{ y: "102%" }}
+                    animate={{ y: 0 }}
+                    transition={{ duration: 0.9, ease: EASE_PREMIUM, delay: HERO_DELAY + index * 0.08 }}
+                    className="block"
+                  >
+                    {word}
+                  </motion.span>
+                </span>
+              ))}
+            </span>
+          ))}
         </h1>
 
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, ease: EASE_PREMIUM, delay: HERO_DELAY + 0.3 }}
+          transition={{ duration: 0.9, ease: EASE_PREMIUM, delay: HERO_DELAY + 0.4 }}
           className="mt-6 max-w-[34ch] font-serif text-step-1 italic text-gold"
         >
           A creative growth partner for brands that refuse to blend in.
@@ -83,7 +82,7 @@ export function Hero() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, ease: EASE_PREMIUM, delay: HERO_DELAY + 0.4 }}
+          transition={{ duration: 0.9, ease: EASE_PREMIUM, delay: HERO_DELAY + 0.5 }}
           className="mt-10 flex flex-wrap items-center gap-6"
         >
           <Button href="#work" variant="ghost">

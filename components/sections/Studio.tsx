@@ -28,9 +28,14 @@ export function Studio() {
             and execution to make brands memorable, trusted, and impossible to ignore — as a
             long-term growth partner, not a vendor.&rdquo;
           </blockquote>
-          <div className="mt-5">
-            <b className="block font-sans font-semibold text-gold">Fleming Nethanel Gurusinghe</b>
-            <span className="text-step-n1 text-off-dim">Founder &amp; CEO</span>
+          <div className="mt-5 flex items-center gap-4">
+            <div className="flex h-12 w-12 flex-none items-center justify-center rounded-full bg-gradient-to-br from-gold to-green text-step-n1 font-serif font-semibold text-ink">
+              FG
+            </div>
+            <div>
+              <b className="block font-sans font-semibold text-gold">Fleming Nethanel Gurusinghe</b>
+              <span className="text-step-n1 text-off-dim">Founder &amp; CEO</span>
+            </div>
           </div>
         </Reveal>
       </div>

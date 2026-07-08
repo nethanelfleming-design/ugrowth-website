@@ -1,9 +1,11 @@
 import { Reveal } from "@/components/ui/Reveal";
+import { Aurora } from "@/components/ui/Aurora";
 
 export function Difference() {
   return (
-    <section className="bg-green-deep py-[var(--gap)]">
-      <div className="mx-auto grid max-w-[var(--maxw)] grid-cols-1 items-center gap-[clamp(2rem,6vw,6rem)] px-[var(--pad)] md:grid-cols-[1.2fr_1fr]">
+    <section className="relative overflow-hidden bg-green-deep py-[var(--gap)]">
+      <Aurora variant="green" />
+      <div className="relative mx-auto grid max-w-[var(--maxw)] grid-cols-1 items-center gap-[clamp(2rem,6vw,6rem)] px-[var(--pad)] md:grid-cols-[1.2fr_1fr]">
         <div>
           <Reveal as="p" className="text-step-n1 font-semibold uppercase tracking-[0.28em] text-gold">
             The difference
