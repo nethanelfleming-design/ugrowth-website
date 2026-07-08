@@ -1,57 +1,61 @@
 # UGrowth — Agency Website
 
 A premium, black-first marketing site for **UGrowth — Media & Marketing**.
-Static, dependency-free, and zero-config on Vercel. Editorial luxury design:
-ink canvas, forest-green atmosphere, soft-gold accent, cinematic interactions.
+Built with Next.js (App Router), Tailwind CSS v4, and Motion (Framer Motion) +
+GSAP for a cinematic, award-agency-grade interaction layer. Editorial luxury
+design: ink canvas, forest-green atmosphere, soft-gold accent.
 
 ## Project structure
 
 ```
 ugrowth-website/
-├── index.html        # Full single-page site (all sections)
-├── styles.css        # Design system + layout + responsive + motion
-├── main.js           # Interactions: loader, reveals, cursor, menu, FAQ, count-up
-├── assets/
-│   └── work/         # Case-study imagery (Industri, The Nets, Yevan David, C&D)
-├── vercel.json       # Static hosting config (clean URLs, asset caching)
-├── robots.txt
+├── app/
+│   ├── layout.tsx        # Fonts, metadata, persistent chrome, MotionConfig
+│   ├── page.tsx           # Composes all section components
+│   └── globals.css        # Tailwind + design tokens + shared keyframes
+├── components/
+│   ├── layout/             # Header (nav + mobile menu), Footer, StickyCta,
+│   │                        # CustomCursor, Loader, SmoothScrollProvider
+│   ├── sections/            # Hero, Manifesto, Work, Services, Difference,
+│   │                        # Process, Impact, Testimonials, Industries,
+│   │                        # Studio, Faq, Cta
+│   └── ui/                  # Reveal, Button, Counter, AccordionItem,
+│                            # WorkTilePlaceholder
+├── lib/motion.ts           # Shared easing + variants
+├── assets/work/            # Case-study source imagery (not yet wired in)
+├── public/                 # favicon, robots.txt
 └── README.md
 ```
 
 ## Run locally
 
-No build step. Either open `index.html` directly, or serve it:
+Requires Node.js 20+.
 
 ```bash
-# Python (built in on most machines)
-python3 -m http.server 3000
-# then open http://localhost:3000
+npm install
+npm run dev
+# open http://localhost:3000
 ```
 
-## Deploy — GitHub + Vercel (≈2 minutes)
-
-The repo is already initialised with clean commit history. To go live:
-
-**1. Create the GitHub repo and push**
 ```bash
-# from inside ugrowth-website/
-# option A — GitHub CLI
-gh repo create ugrowth-website --public --source=. --push
-
-# option B — manual: create an empty repo on github.com, then
-git remote add origin https://github.com/<you>/ugrowth-website.git
-git push -u origin main
+npm run build   # production build
+npm run start   # serve the production build
 ```
 
-**2. Deploy on Vercel**
-- Go to vercel.com → **Add New… → Project** → **Import** your GitHub repo.
-- Framework preset: **Other** (it's static). Root: `./`. No build command needed.
-- Click **Deploy**. Every future `git push` auto-deploys.
+## Deploy — GitHub + Vercel
 
-That's it — Vercel gives you a live `*.vercel.app` URL and continuous deploys.
+The repo is already pushed to `github.com/nethanelfleming-design/ugrowth-website`
+and connected to a Vercel project. Every push to `main` auto-deploys.
+
+If the Vercel project's **Framework Preset** is still set to "Other" from the
+original static-site setup, switch it to **Next.js** once in
+Project Settings → General for builds to run correctly.
 
 ## Notes
-- Fonts (Fraunces + Inter) load from Google Fonts at runtime.
-- Testimonials and metrics use honest placeholders — swap in real quotes/numbers when ready.
-- To reskin toward "Bold Creative Studio" or "Cinematic Interactive", adjust the
-  tokens at the top of `styles.css` and the hero treatment.
+- Fonts (Fraunces + Inter) are self-hosted via `next/font/google`.
+- The four work tiles are intentionally empty placeholders (no stock/AI
+  imagery) until real case-study assets are supplied.
+- Testimonials and metrics use honest placeholders — swap in real
+  quotes/numbers when ready.
+- Design tokens (palette, fluid type scale, easing) live in
+  `app/globals.css`'s `:root` and `@theme` blocks.

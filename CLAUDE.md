@@ -14,8 +14,9 @@ they can recreate, extend, or reskin the site without further context.
   *"these people operate on another level"* — and convert that into an enquiry.
 - **Not a brochure — a piece of evidence.** The site must *feel* more expensive and
   considered than the brands the visitor already admires.
-- **Status:** built as a static, dependency-free single-page site (see §9). Deployed
-  target: Vercel (zero-config). Repo has clean commit history.
+- **Status:** built as a Next.js single-page site with a full Motion/GSAP
+  interaction layer (see §9–10). Deployed on Vercel. Repo has clean commit
+  history.
 
 ---
 
@@ -151,35 +152,55 @@ Structure each as **Challenge → Approach → Craft → Outcome**. Metrics rese
 
 ## 9. Tech, file structure & how to run
 
-**Stack:** plain HTML + CSS + vanilla JS. No framework, no build step, no dependencies
-(deliberate — fastest, most robust, zero-config on Vercel). Fonts from Google Fonts.
+**Stack:** Next.js (App Router) + TypeScript, Tailwind CSS v4, Motion (Framer
+Motion) for entrance/hover/menu/accordion choreography, GSAP + ScrollTrigger
+for scroll-scrubbed parallax, Lenis for inertial smooth scroll, lucide-react
+for functional icons. Fonts (Fraunces + Inter) self-hosted via `next/font/google`.
 
 ```
 ugrowth-website/
-├── index.html        # full single-page site, all sections, SEO/OG meta
-├── styles.css        # design system + layout + responsive + motion (~305 lines)
-├── main.js           # interactions (~147 lines, passes `node --check`)
-├── assets/work/      # case-study imagery (see §11)
-├── vercel.json       # cleanUrls + asset cache headers
-├── robots.txt
-├── README.md         # deploy runbook
+├── app/
+│   ├── layout.tsx        # fonts, metadata, MotionConfig, persistent chrome
+│   ├── page.tsx           # composes all section components
+│   └── globals.css        # design tokens (@theme) + shared keyframes
+├── components/
+│   ├── layout/             # Header (nav + mobile menu), Footer, StickyCta,
+│   │                        # CustomCursor, Loader, SmoothScrollProvider
+│   ├── sections/            # one component per homepage section (see §6)
+│   └── ui/                  # Reveal, Button, Counter, AccordionItem,
+│                            # WorkTilePlaceholder
+├── lib/motion.ts           # shared easing curve + entrance variants
+├── assets/work/            # case-study source imagery (not yet wired in)
+├── public/                 # favicon, robots.txt
+├── README.md
 └── CLAUDE.md         # this file
 ```
 
-**Run locally:** open `index.html`, or `python3 -m http.server 3000` → http://localhost:3000
+**Run locally:**
+```bash
+npm install
+npm run dev   # http://localhost:3000
+npm run build # production build
+```
 
 ---
 
-## 10. Interactions (in `main.js`)
+## 10. Interactions
 
-Branded loader (with % + failsafe) · scroll reveals (IntersectionObserver, `.reveal`
-→ `.in`) · nav shrink on scroll · inertia custom cursor (desktop, morphs to "View" over
-tiles) · magnetic buttons (`[data-mag]`) · mobile menu overlay · FAQ accordion
-(single-open) · count-up stats (`[data-count]`) · sticky mobile CTA bar. All gated on
-`prefers-reduced-motion` and pointer/hover capability.
+Branded loader (`Loader.tsx`, animated wordmark + gold bar + % counter) ·
+scroll reveals (`Reveal`/`RevealGroup` — Motion's `whileInView`) · nav shrink
+on scroll + glass blur (`Header.tsx`) · inertia custom cursor (desktop,
+morphs to a label over `[data-cursor]` targets) · magnetic buttons
+(`Button.tsx`, spring-based pointer tracking) · mobile menu overlay
+(`AnimatePresence` slide) · FAQ accordion (`AccordionItem.tsx`, single-open,
+animated height) · count-up stats (`Counter.tsx`) · sticky mobile CTA bar ·
+hero atmosphere parallax (GSAP ScrollTrigger) · Lenis smooth scroll. All
+motion respects `prefers-reduced-motion` via `MotionConfig reducedMotion="user"`
+plus a global CSS fallback, and the custom cursor/magnetic effects are gated
+on `(hover: hover) and (pointer: fine)`.
 
-Future enhancements: Lenis smooth-scroll, real showreel video in hero, WebGL touches,
-page transitions for multi-page case studies.
+Future enhancements: real showreel video in hero, WebGL touches, page
+transitions for multi-page case studies.
 
 ---
 
@@ -188,22 +209,27 @@ page transitions for multi-page case studies.
 In `assets/work/` (high-res, cropped/graded from the source portfolio):
 `industri_flyer.png`, `industri_moodboard.png`, `nets_logo.png`, `nets_1/2/3.png`,
 `yevan_portrait.png`, `yevan_1/2/3/4.png`, `cd_1.png`, `cd_2.png`, `cd_visual.png`.
-Homepage currently uses: industri_flyer, yevan_portrait, nets_2, cd_2.
 
-Missing / to supply: UGrowth logo (SVG/PNG), real showreel + client video, hi-res The
-Nets stills, real testimonials, verified metrics, final contact email.
+The four work tiles currently render `WorkTilePlaceholder` (a clean animated
+empty state) instead of images — no stock/AI imagery — per direct instruction,
+pending final case-study assets from the client.
+
+Missing / to supply: UGrowth logo (SVG/PNG), final case-study images, real
+showreel + client video, hi-res The Nets stills, real testimonials, verified
+metrics, final contact email.
 
 ---
 
 ## 12. Deploy (GitHub + Vercel)
 
-1. Push: from the folder — `gh repo create ugrowth-website --public --source=. --push`
-   (or create an empty GitHub repo, then `git remote add origin <url> && git push -u origin main`).
-2. Vercel: Add New → Project → import the repo → framework preset **Other** (static),
-   no build command → Deploy. Future pushes auto-deploy.
+Already live: pushed to `github.com/nethanelfleming-design/ugrowth-website`,
+deployed on Vercel with the Git integration auto-deploying every push to `main`.
 
-Note: this repo was built with clean history and shipped as `ugrowth-website-repo.zip`
-because the original synced folder blocks git's lock files. Unzip that for a working repo.
+Note: the Vercel project's Framework Preset was originally set to "Other"
+during the static-site phase. After the Next.js migration it needs to be
+**Next.js** in Project Settings → General for `next build` to run correctly
+(Vercel does not always re-detect the framework on an existing project
+automatically).
 
 ---
 
@@ -211,8 +237,9 @@ because the original synced folder blocks git's lock files. Unzip that for a wor
 
 - [ ] Individual case-study pages (Challenge→Approach→Craft→Outcome, per §7)
 - [ ] Dedicated Services & Studio pages
+- [ ] Wire real case-study images into `WorkTilePlaceholder`'s slots once supplied
 - [ ] Collect + insert real testimonials (get sign-off) and verified metrics
-- [ ] Replace hero atmosphere with a graded showreel; add Lenis smooth-scroll
+- [ ] Replace hero atmosphere with a graded showreel
 - [ ] Add UGrowth logo SVG; finalise real contact email + social links
 - [ ] Optional: reskin toward Concept 2 (Bold) or Concept 3 (Cinematic)
 

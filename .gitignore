@@ -1,14 +1,36 @@
 # Dependencies
 node_modules/
+/.pnp
+.pnp.*
+
+# Next.js
+/.next/
+/out/
+
+# Production
+/build
+
 # OS
 .DS_Store
 Thumbs.db
+
 # Editor
 .vscode/
 .idea/
+
 # Vercel
 .vercel
+
 # Logs
 *.log
+npm-debug.log*
+
+# TypeScript
+*.tsbuildinfo
+next-env.d.ts
+
+# env files
+.env*
+
 # Stray nested repo
 Ugrowth repo/

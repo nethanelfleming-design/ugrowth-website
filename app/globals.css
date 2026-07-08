@@ -1,0 +1,140 @@
+@import "tailwindcss";
+
+:root {
+  /* palette */
+  --ink: #0e0f0e;
+  --ink-2: #141614;
+  --green: #1b3b2f;
+  --green-deep: #10241c;
+  --off: #f5f2ea;
+  --off-dim: #cfd4cd;
+  --gold: #c6a961;
+  --gold-soft: #d8c088;
+
+  /* fluid type scale */
+  --step-n1: clamp(0.8rem, 0.76rem + 0.2vw, 0.92rem);
+  --step-0: clamp(1rem, 0.95rem + 0.3vw, 1.15rem);
+  --step-1: clamp(1.3rem, 1.1rem + 0.9vw, 1.85rem);
+  --step-2: clamp(1.8rem, 1.4rem + 1.9vw, 3rem);
+  --step-3: clamp(2.6rem, 1.8rem + 3.6vw, 5.2rem);
+  --step-4: clamp(3.4rem, 2.1rem + 6.2vw, 8.4rem);
+
+  --pad: clamp(1.25rem, 6vw, 8rem);
+  --gap: clamp(3.5rem, 9vw, 9rem);
+  --maxw: 1440px;
+}
+
+@theme inline {
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-green: var(--green);
+  --color-green-deep: var(--green-deep);
+  --color-off: var(--off);
+  --color-off-dim: var(--off-dim);
+  --color-gold: var(--gold);
+  --color-gold-soft: var(--gold-soft);
+
+  --font-serif: var(--font-fraunces), Georgia, "Times New Roman", serif;
+  --font-sans: var(--font-inter), system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+
+  --text-step-n1: var(--step-n1);
+  --text-step-0: var(--step-0);
+  --text-step-1: var(--step-1);
+  --text-step-2: var(--step-2);
+  --text-step-3: var(--step-3);
+  --text-step-4: var(--step-4);
+
+  --ease-premium: cubic-bezier(0.22, 1, 0.36, 1);
+
+  --animate-rise: rise 0.9s var(--ease-premium) forwards;
+  --animate-fill: fill 1.3s var(--ease-premium) 0.2s forwards;
+  --animate-scan: scan 2.4s var(--ease-premium) infinite;
+  --animate-shimmer: shimmer 2.6s ease-in-out infinite;
+  --animate-float-slow: float 9s ease-in-out infinite;
+  --animate-float-slower: float 13s ease-in-out infinite;
+}
+
+@keyframes rise {
+  to {
+    transform: translateY(0);
+  }
+}
+@keyframes fill {
+  to {
+    width: 100%;
+  }
+}
+@keyframes scan {
+  0%,
+  100% {
+    transform: scaleX(0.3);
+    opacity: 0.4;
+  }
+  50% {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
+@keyframes shimmer {
+  0% {
+    background-position: -140% 0;
+  }
+  100% {
+    background-position: 140% 0;
+  }
+}
+@keyframes float {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -22px, 0);
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+body {
+  background: var(--ink);
+  color: var(--off);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  line-height: 1.02;
+  letter-spacing: -0.01em;
+}
+::selection {
+  background: var(--gold);
+  color: var(--ink);
+}
+button {
+  font: inherit;
+  color: inherit;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}
