@@ -10,3 +10,5 @@ Thumbs.db
 .vercel
 # Logs
 *.log
+# Stray nested repo
+Ugrowth repo/
