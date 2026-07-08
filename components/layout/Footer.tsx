@@ -1,18 +1,5 @@
 import Image from "next/image";
 
-const NAV = [
-  { href: "#work", label: "Work" },
-  { href: "#services", label: "Services" },
-  { href: "#studio", label: "Studio" },
-  { href: "#contact", label: "Contact" },
-];
-
-const SOCIALS = [
-  { href: "#", label: "Instagram" },
-  { href: "#", label: "TikTok" },
-  { href: "#", label: "LinkedIn" },
-];
-
 export function Footer() {
   const year = new Date().getFullYear();
 
@@ -25,49 +12,21 @@ export function Footer() {
             <br />
             talk<span className="text-gold">.</span>
           </div>
-          <div className="flex flex-wrap gap-[clamp(2rem,5vw,5rem)]">
-            <div>
-              <h5 className="mb-4 text-step-n1 uppercase tracking-[0.16em] text-gold">Navigate</h5>
-              {NAV.map((item) => (
-                <a
-                  key={item.href}
-                  href={item.href}
-                  className="block py-1 text-step-0 text-off-dim transition-colors duration-300 hover:text-off"
-                >
-                  {item.label}
-                </a>
-              ))}
-            </div>
-            <div>
-              <h5 className="mb-4 text-step-n1 uppercase tracking-[0.16em] text-gold">Contact</h5>
-              <a
-                href="tel:+94771439128"
-                className="block py-1 text-step-0 text-off-dim transition-colors duration-300 hover:text-off"
-              >
-                +94 (77) 143 9128
-              </a>
-              <a
-                href="mailto:hello@ugrowth.agency"
-                className="block py-1 text-step-0 text-off-dim transition-colors duration-300 hover:text-off"
-              >
-                hello@ugrowth.agency
-              </a>
-              <p className="py-1 text-step-0 text-off-dim">Colombo · Worldwide</p>
-            </div>
-            <div>
-              <h5 className="mb-4 text-step-n1 uppercase tracking-[0.16em] text-gold">Follow</h5>
-              <div className="flex flex-col gap-1">
-                {SOCIALS.map((social) => (
-                  <a
-                    key={social.label}
-                    href={social.href}
-                    className="block py-1 text-step-0 text-off-dim transition-colors duration-300 hover:text-off"
-                  >
-                    {social.label}
-                  </a>
-                ))}
-              </div>
-            </div>
+          <div>
+            <h5 className="mb-4 text-step-n1 uppercase tracking-[0.16em] text-gold">Contact</h5>
+            <a
+              href="tel:+94771439128"
+              className="block py-1 text-step-0 text-off-dim transition-colors duration-300 hover:text-off"
+            >
+              +94 (77) 143 9128
+            </a>
+            <a
+              href="mailto:ugrowthmarketing@gmail.com"
+              className="block py-1 text-step-0 text-off-dim transition-colors duration-300 hover:text-off"
+            >
+              ugrowthmarketing@gmail.com
+            </a>
+            <p className="py-1 text-step-0 text-off-dim">Colombo · Worldwide</p>
           </div>
         </div>
 

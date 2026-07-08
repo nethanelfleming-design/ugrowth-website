@@ -121,7 +121,7 @@ and dedicated Services/Studio pages are the next build phase.
 11. **Studio + founder** — "Small by design." + founder note (see §7).
 12. **FAQ** — accordions: outside hospitality? · pricing (bespoke, no fixed packages) · remote/international? · what a project looks like.
 13. **CTA / The invitation** — *"Let's build something impossible to ignore."* + "We take on a limited number of brands each quarter." + one gold button.
-14. **Mega-footer** — giant "Let's talk." + nav + contact + socials + "Impossible to ignore."
+14. **Footer** — giant "Let's talk." + Contact info (phone, email, location) + "Impossible to ignore." Simplified per direct instruction — the Navigate and Follow (social links) columns were removed; contact is the only column now.
 
 Testimonials section was removed from the homepage per direct instruction
 (`components/sections/Testimonials.tsx` deleted, no longer composed in
@@ -150,7 +150,11 @@ Structure each as **Challenge → Approach → Craft → Outcome**. Metrics rese
   execution to make brands memorable, trusted, and impossible to ignore — as a
   long-term growth partner, not a vendor."*
 - **Phone:** +94 (77) 143 9128 · **Handle:** @ugrowth_ · **Base:** Colombo, worldwide.
-- **Email in site is a placeholder** (`hello@ugrowth.agency`) — replace with the real address.
+- **Email:** the footer (`Footer.tsx`) now uses the real address
+  `ugrowthmarketing@gmail.com`. The CTA section's mail link (`Cta.tsx`) still
+  points to the old placeholder `hello@ugrowth.agency` — wasn't in scope of
+  the footer-simplification request, but worth updating to match when
+  touched next.
 
 ---
 
