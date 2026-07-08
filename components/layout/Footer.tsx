@@ -73,15 +73,13 @@ export function Footer() {
 
         <div className="mt-[clamp(2.5rem,6vw,5rem)] flex flex-wrap items-center justify-between gap-4 border-t border-off/10 pt-6 text-step-n1 text-off/40">
           <div className="flex items-center gap-3">
-            <div className="relative h-8 w-8 flex-none">
-              <Image
-                src="/assets/brand/logo-256.png"
-                alt="UGrowth Media and Marketing"
-                fill
-                sizes="32px"
-                className="object-contain"
-              />
-            </div>
+            <Image
+              src="/assets/brand/logo-wordmark.png"
+              alt="UGrowth Media and Marketing"
+              width={1047}
+              height={362}
+              className="h-7 w-auto flex-none object-contain"
+            />
             <span>© {year} UGrowth — Media &amp; Marketing</span>
           </div>
           <span>Impossible to ignore.</span>

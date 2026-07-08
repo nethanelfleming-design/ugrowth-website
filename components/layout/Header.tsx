@@ -42,13 +42,13 @@ export function Header() {
             : "border-b border-transparent py-5.5"
         }`}
       >
-        <Link href="#top" className="relative block h-10 w-10 flex-none">
+        <Link href="#top" className="block flex-none">
           <Image
-            src="/assets/brand/logo-256.png"
+            src="/assets/brand/logo-wordmark.png"
             alt="UGrowth Media and Marketing"
-            fill
-            sizes="40px"
-            className="object-contain"
+            width={1047}
+            height={362}
+            className="h-9 w-auto object-contain"
             priority
           />
         </Link>

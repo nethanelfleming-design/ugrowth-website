@@ -223,10 +223,15 @@ photography is used anywhere; decorative visuals elsewhere (Aurora, GlowOrb,
 grain) are abstract/generative, not photographic, so nothing purports to be
 real client photography before it's supplied.
 
-The real UGrowth logo (`public/assets/brand/ugrowth-logo.png`, exact client
-asset — a square dark-green lockup, used unmodified per instruction) is wired
-into the nav, footer, favicon (`app/icon.png`/`app/apple-icon.png`), and the
-loading screen, replacing the earlier text wordmark and generic icons.
+The real UGrowth logo is wired into the nav, footer, favicon
+(`app/icon.png`/`app/apple-icon.png`), and the loading screen, replacing the
+earlier text wordmark and generic icons. Source of truth:
+`public/assets/brand/ugrowth-logo.png` — the exact client-supplied file
+(2000×2000, white wordmark on transparent background), untouched. For inline
+placements (nav/footer/loader) a second file, `logo-wordmark.png`, is used —
+it's the same artwork with its transparent margins trimmed (bounding-box crop
+only, no recolor/redesign) so the mark reads clearly at small sizes; the
+favicon/app-icon variants are resized from the untrimmed square original.
 
 Missing / to supply: final case-study images for Yevan David / The Nets /
 Crumbs & Doilies, real showreel + client video, real testimonials, verified

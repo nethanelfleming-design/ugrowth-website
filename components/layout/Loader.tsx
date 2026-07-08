@@ -45,14 +45,14 @@ export function Loader({ onDone }: { onDone?: () => void }) {
               initial={{ opacity: 0, scale: 0.92 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.9, ease: EASE_PREMIUM }}
-              className="relative mx-auto h-[clamp(4.5rem,14vw,7rem)] w-[clamp(4.5rem,14vw,7rem)]"
+              className="mx-auto"
             >
               <Image
-                src="/assets/brand/logo-512.png"
+                src="/assets/brand/logo-wordmark.png"
                 alt="UGrowth Media and Marketing"
-                fill
-                sizes="112px"
-                className="object-contain"
+                width={1047}
+                height={362}
+                className="mx-auto h-[clamp(2.5rem,7vw,3.5rem)] w-auto object-contain"
                 priority
               />
             </motion.div>
