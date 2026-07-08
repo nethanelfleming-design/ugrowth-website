@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { Menu, X } from "lucide-react";
@@ -41,9 +42,15 @@ export function Header() {
             : "border-b border-transparent py-5.5"
         }`}
       >
-        <Link href="#top" className="font-serif text-2xl font-semibold tracking-tight">
-          <span className="text-off">UG</span>
-          <span className="text-gold">rowth</span>
+        <Link href="#top" className="relative block h-10 w-10 flex-none">
+          <Image
+            src="/assets/brand/logo-256.png"
+            alt="UGrowth Media and Marketing"
+            fill
+            sizes="40px"
+            className="object-contain"
+            priority
+          />
         </Link>
 
         <nav className="hidden items-center gap-9 md:flex">

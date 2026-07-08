@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 const NAV = [
   { href: "#work", label: "Work" },
   { href: "#services", label: "Services" },
@@ -69,8 +71,19 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-[clamp(2.5rem,6vw,5rem)] flex flex-wrap justify-between gap-4 border-t border-off/10 pt-6 text-step-n1 text-off/40">
-          <span>© {year} UGrowth — Media &amp; Marketing</span>
+        <div className="mt-[clamp(2.5rem,6vw,5rem)] flex flex-wrap items-center justify-between gap-4 border-t border-off/10 pt-6 text-step-n1 text-off/40">
+          <div className="flex items-center gap-3">
+            <div className="relative h-8 w-8 flex-none">
+              <Image
+                src="/assets/brand/logo-256.png"
+                alt="UGrowth Media and Marketing"
+                fill
+                sizes="32px"
+                className="object-contain"
+              />
+            </div>
+            <span>© {year} UGrowth — Media &amp; Marketing</span>
+          </div>
           <span>Impossible to ignore.</span>
         </div>
       </div>

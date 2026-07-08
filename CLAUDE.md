@@ -223,9 +223,14 @@ photography is used anywhere; decorative visuals elsewhere (Aurora, GlowOrb,
 grain) are abstract/generative, not photographic, so nothing purports to be
 real client photography before it's supplied.
 
-Missing / to supply: UGrowth logo (SVG/PNG), final case-study images for
-Yevan David / The Nets / Crumbs & Doilies, real showreel + client video,
-real testimonials, verified metrics, final contact email.
+The real UGrowth logo (`public/assets/brand/ugrowth-logo.png`, exact client
+asset — a square dark-green lockup, used unmodified per instruction) is wired
+into the nav, footer, favicon (`app/icon.png`/`app/apple-icon.png`), and the
+loading screen, replacing the earlier text wordmark and generic icons.
+
+Missing / to supply: final case-study images for Yevan David / The Nets /
+Crumbs & Doilies, real showreel + client video, real testimonials, verified
+metrics, final contact email.
 
 ---
 
@@ -246,10 +251,10 @@ automatically).
 
 - [ ] Individual case-study pages (Challenge→Approach→Craft→Outcome, per §7)
 - [ ] Dedicated Services & Studio pages
-- [ ] Wire real case-study images into `WorkTilePlaceholder`'s slots once supplied
+- [ ] Wire real case-study images into `WorkTileArt`'s remaining slots (Yevan David, The Nets, Crumbs & Doilies) once supplied
 - [ ] Collect + insert real testimonials (get sign-off) and verified metrics
 - [ ] Replace hero atmosphere with a graded showreel
-- [ ] Add UGrowth logo SVG; finalise real contact email + social links
+- [ ] Finalise real contact email + social links
 - [ ] Optional: reskin toward Concept 2 (Bold) or Concept 3 (Cinematic)
 
 ## 14. Guardrails

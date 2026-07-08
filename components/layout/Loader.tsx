@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import { AnimatePresence, motion } from "motion/react";
 import { EASE_PREMIUM } from "@/lib/motion";
 
@@ -40,16 +41,21 @@ export function Loader({ onDone }: { onDone?: () => void }) {
           className="fixed inset-0 z-[9000] grid place-items-center bg-ink"
         >
           <div className="text-center">
-            <div className="overflow-hidden font-serif text-[clamp(2rem,7vw,4rem)] font-semibold tracking-[0.02em] text-off">
-              <motion.span
-                initial={{ y: "105%" }}
-                animate={{ y: 0 }}
-                transition={{ duration: 0.9, ease: EASE_PREMIUM }}
-                className="inline-block"
-              >
-                UGROWTH
-              </motion.span>
-            </div>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.92 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.9, ease: EASE_PREMIUM }}
+              className="relative mx-auto h-[clamp(4.5rem,14vw,7rem)] w-[clamp(4.5rem,14vw,7rem)]"
+            >
+              <Image
+                src="/assets/brand/logo-512.png"
+                alt="UGrowth Media and Marketing"
+                fill
+                sizes="112px"
+                className="object-contain"
+                priority
+              />
+            </motion.div>
             <div className="mx-auto mt-6 h-px w-[min(220px,50vw)] overflow-hidden bg-off/10">
               <motion.i
                 initial={{ width: "0%" }}
