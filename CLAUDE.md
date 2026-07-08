@@ -214,14 +214,16 @@ In `assets/work/` (high-res, cropped/graded from the source portfolio):
 `industri_flyer.png`, `industri_moodboard.png`, `nets_logo.png`, `nets_1/2/3.png`,
 `yevan_portrait.png`, `yevan_1/2/3/4.png`, `cd_1.png`, `cd_2.png`, `cd_visual.png`.
 
-Industri's work tile now uses a real supplied photo (`public/assets/work/industri.jpg`,
-cropped from the client's own campaign poster — see `Work.tsx`'s `PROJECTS[0].image`).
-The other three tiles still render `WorkTileArt` — a generative typographic/
-gradient poster treatment (large faint serif watermark + gold or green wash,
-per project) — pending final case-study images from the client. No stock
-photography is used anywhere; decorative visuals elsewhere (Aurora, GlowOrb,
-grain) are abstract/generative, not photographic, so nothing purports to be
-real client photography before it's supplied.
+Industri and Yevan David's work tiles now use real supplied images
+(`public/assets/work/industri.jpg`, `yevan.jpg` — see `Work.tsx`'s
+`PROJECTS[].image`); both are the client's full supplied graphics shown
+uncropped, since each one's native aspect ratio happens to closely match its
+tile's aspect ratio. The Nets and Crumbs & Doilies still render `WorkTileArt`
+— a generative typographic/gradient poster treatment (large faint serif
+watermark + gold or green wash, per project) — pending their case-study
+images. No stock photography is used anywhere; decorative visuals elsewhere
+(Aurora, GlowOrb, grain) are abstract/generative, not photographic, so
+nothing purports to be real client photography before it's supplied.
 
 The real UGrowth logo is wired into the nav, footer, favicon
 (`app/icon.png`/`app/apple-icon.png`), and the loading screen, replacing the
@@ -233,9 +235,9 @@ it's the same artwork with its transparent margins trimmed (bounding-box crop
 only, no recolor/redesign) so the mark reads clearly at small sizes; the
 favicon/app-icon variants are resized from the untrimmed square original.
 
-Missing / to supply: final case-study images for Yevan David / The Nets /
-Crumbs & Doilies, real showreel + client video, real testimonials, verified
-metrics, final contact email.
+Missing / to supply: final case-study images for The Nets / Crumbs & Doilies,
+real showreel + client video, real testimonials, verified metrics, final
+contact email.
 
 ---
 
@@ -256,7 +258,7 @@ automatically).
 
 - [ ] Individual case-study pages (Challenge→Approach→Craft→Outcome, per §7)
 - [ ] Dedicated Services & Studio pages
-- [ ] Wire real case-study images into `WorkTileArt`'s remaining slots (Yevan David, The Nets, Crumbs & Doilies) once supplied
+- [ ] Wire real case-study images into `WorkTileArt`'s remaining slots (The Nets, Crumbs & Doilies) once supplied
 - [ ] Collect + insert real testimonials (get sign-off) and verified metrics
 - [ ] Replace hero atmosphere with a graded showreel
 - [ ] Finalise real contact email + social links

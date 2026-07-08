@@ -30,6 +30,7 @@ const PROJECTS: Project[] = [
     aspect: "aspect-[16/13]",
     mark: "YD",
     accent: "green" as const,
+    image: "/assets/work/yevan.jpg",
   },
   {
     name: "The Nets",
