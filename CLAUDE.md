@@ -113,15 +113,16 @@ and dedicated Services/Studio pages are the next build phase.
 3. **Hero** — full viewport, ink + atmospheric green wash + faint grain. H1 "Impossible to ignore." rises line-by-line. Sub: *"A creative growth partner for brands that refuse to blend in."* Ghost CTA "See the work" + scroll cue. (Swap the atmospheric bg for a silent showreel when footage exists.)
 4. **Manifesto** — *"Most agencies make content. We build brands."* + supporting line + "From Colombo, for the world."
 5. **Selected work** — asymmetric interactive grid (tiles: Industri lg, Yevan sm, The Nets md, C&D md). Hover: image scale + reveal, cursor "View case". Tiles → case studies (currently anchor to contact).
-6. **Services / What we do** — 6 outcome-led rows (see §2 voice). Hover expands.
-7. **The Difference** — full forest-green section. *"Most brands don't have a content problem. They have an attention problem."*
-8. **Process** — 7 steps: Research · Strategy · Mood Boarding · Creation · Editing · Publishing · Growth.
-9. **Impact** — count-up stats. Currently illustrative (10K+ community, 4 brands, 100% bespoke) with an honest note; replace with verified metrics as they arrive.
-10. **Industries** — hospitality/nightlife lead, broader sectors follow.
-11. **Studio + founder** — "Small by design." + founder note (see §7).
-12. **FAQ** — accordions: outside hospitality? · pricing (bespoke, no fixed packages) · remote/international? · what a project looks like.
-13. **CTA / The invitation** — *"Let's build something impossible to ignore."* + "We take on a limited number of brands each quarter." + one gold button.
-14. **Footer** — giant "Let's talk." + Contact info (phone, email, location) + "Impossible to ignore." Simplified per direct instruction — the Navigate and Follow (social links) columns were removed; contact is the only column now.
+6. **Real Estate Marketing** — a dedicated vertical spotlight, not a generic case study: headline + outcome-led copy, then a 3-up grid of real property films (hover-to-preview muted, click opens a full sound-on lightbox). See §7a.
+7. **Services / What we do** — 6 outcome-led rows (see §2 voice). Hover expands.
+8. **The Difference** — full forest-green section. *"Most brands don't have a content problem. They have an attention problem."*
+9. **Process** — 7 steps: Research · Strategy · Mood Boarding · Creation · Editing · Publishing · Growth.
+10. **Impact** — count-up stats. Currently illustrative (10K+ community, 4 brands, 100% bespoke) with an honest note; replace with verified metrics as they arrive.
+11. **Industries** — hospitality/nightlife lead, broader sectors follow.
+12. **Studio + founder** — "Small by design." + founder note (see §7).
+13. **FAQ** — accordions: outside hospitality? · pricing (bespoke, no fixed packages) · remote/international? · what a project looks like.
+14. **CTA / The invitation** — *"Let's build something impossible to ignore."* + "We take on a limited number of brands each quarter." + one gold button.
+15. **Footer** — giant "Let's talk." + Contact info (phone, email, location) + "Impossible to ignore." Simplified per direct instruction — the Navigate and Follow (social links) columns were removed; contact is the only column now.
 
 Testimonials section was removed from the homepage per direct instruction
 (`components/sections/Testimonials.tsx` deleted, no longer composed in
@@ -138,6 +139,37 @@ Structure each as **Challenge → Approach → Craft → Outcome**. Metrics rese
 - **The Nets** (sports bar & restaurant) — Challenge: become THE destination for live sport/events. Approach: event-led calendar (British GP, football, grand opening). Craft: premium flyer suite, match promos, launch creative. Outcome: consistent high-energy presence. [reserve: turnout] · NOTE: replace any low-res source stills with hi-res.
 - **Yevan David** (athlete/personal brand) — Challenge: build a Sri Lankan racing driver's international brand. Approach: athlete storytelling + race-week hype. Craft: race-week graphics, milestone content, motorsport-games coverage, BTS video. Outcome: cohesive athlete brand; 10,000-follower milestone. [reserve: reach/engagement]
 - **Crumbs & Doilies** (bakery/lifestyle) — Challenge: keep a loved bakery's content fresh and conversion-driving. Approach: craving-first social tied to seasonal drops + ordering deadlines. Craft: product photo/video, seasonal graphics, "order by" urgency creative. Outcome: appetite-led content with seasonal rhythm. [reserve: orders] · NOTE: shares a name with a known UK brand — confirm you can reference the engagement + get permission before publishing.
+
+---
+
+## 7a. Real Estate Marketing section
+
+A dedicated homepage section (`components/sections/RealEstate.tsx`, id
+`real-estate`) proving one specific vertical in motion rather than stills.
+Sits between Selected Work and Services.
+
+- **Copy:** eyebrow "Real Estate Marketing" · H2 "Every listing, shot like
+  it's already sold." · body ties directly to outcomes (attract buyers,
+  generate qualified leads, present listings premium) — not deliverables.
+- **Gallery:** 3 real property films, supplied by the client (vertical 9:16,
+  originally TikTok exports). Each `VideoCard` (`components/ui/VideoCard.tsx`)
+  shows a poster image + duration badge by default; hovering (fine-pointer
+  only) plays a muted loop preview in place; clicking opens
+  `VideoLightbox.tsx`, a fixed overlay with full sound-on playback and native
+  controls. Cards reuse `TiltCard` (lighter strength than Work's tiles) for
+  the same depth language as the rest of the site.
+- **Assets:** `public/assets/real-estate/listing-{1,2,3}.mp4` + matching
+  `-poster.jpg` stills (extracted via ffmpeg at a clean, non-transitional
+  timestamp in each clip). Source clips were HEVC/mixed-codec exports from a
+  downloader tool — HEVC doesn't play in most non-Safari browsers, so all
+  three were re-encoded to H.264/AAC with `+faststart` (ffmpeg, portable
+  binary via the `ffmpeg-static` npm package, not a project dependency) at a
+  capped ~2000kbps to keep file weight reasonable (7–12MB each) while
+  guaranteeing playback everywhere. `preload="none"` on the card video so
+  none of the three fetch until a visitor actually hovers or taps.
+- **No nav link added** — the primary nav (Work · Services · Studio ·
+  [Let's talk]) stays as documented in §5; this section is reachable by
+  scroll only, consistent with "no dropdowns, stay minimal."
 
 ---
 
@@ -176,10 +208,12 @@ ugrowth-website/
 │   │                        # CustomCursor, Loader, SmoothScrollProvider
 │   ├── sections/            # one component per homepage section (see §6)
 │   └── ui/                  # Reveal, Button, Counter, AccordionItem,
-│                            # WorkTilePlaceholder
+│                            # TiltCard, WorkTileArt, VideoCard, VideoLightbox,
+│                            # Aurora, GlowOrb, GrainOverlay
 ├── lib/motion.ts           # shared easing curve + entrance variants
-├── assets/work/            # case-study source imagery (not yet wired in)
-├── public/                 # favicon, robots.txt
+├── assets/work/            # legacy case-study source imagery (unused)
+├── public/                 # favicon, robots.txt, assets/work, assets/brand,
+│                            # assets/real-estate
 ├── README.md
 └── CLAUDE.md         # this file
 ```
@@ -251,9 +285,15 @@ it's the same artwork with its transparent margins trimmed (bounding-box crop
 only, no recolor/redesign) so the mark reads clearly at small sizes; the
 favicon/app-icon variants are resized from the untrimmed square original.
 
-Missing / to supply: real showreel + client video, real testimonials,
-verified metrics. (Contact email: footer uses the real address; `Cta.tsx`'s
-mail link still has the old placeholder — see §8 note above.)
+Three real property films live in `public/assets/real-estate/` (see §7a for
+the full write-up): `listing-{1,2,3}.mp4` + `-poster.jpg` stills, re-encoded
+to H.264/AAC from mixed HEVC/H.264 downloader-tool sources for universal
+browser playback.
+
+Missing / to supply: real showreel + client video for the hero, real
+testimonials, verified metrics. (Contact email: footer uses the real
+address; `Cta.tsx`'s mail link still has the old placeholder — see §8 note
+above.)
 
 ---
 
